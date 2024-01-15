@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,25 +21,15 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        private int PocitadloStisku { get; set; } = 0;
 
-        public MainWindow()
+        private void Klik(object sender, RoutedEventArgs e)
         {
-            InitializeComponent();
-        }
-
-        private void Klik1(object sender, RoutedEventArgs e)
-        {
-
-            PocitadloStisku += 1;
-
-            xd.Content = PocitadloStisku;
-        }
-
-        private void Klik2 (object sender, RoutedEventArgs e)
-        {
-            PocitadloStisku += 2;
-            xd.Content = PocitadloStisku;
+            Button clickedButton = sender as Button;
+            if (clickedButton != null)
+            {
+                // Přidat obsah stisknutého tlačítka k obsahu labelu
+                xd.Content += clickedButton.Content.ToString();
+            }
         }
     }
 }
